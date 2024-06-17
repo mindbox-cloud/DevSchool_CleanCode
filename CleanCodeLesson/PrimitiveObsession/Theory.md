@@ -1,0 +1,1 @@
+- [dev.to community post](https://dev.to/weeklydevtips/primitive-obsession?ysclid=lxjcgouglr454375552)
