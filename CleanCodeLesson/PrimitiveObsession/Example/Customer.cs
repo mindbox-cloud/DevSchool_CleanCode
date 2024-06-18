@@ -19,12 +19,12 @@ public class Customer
 	public bool IsEmailConfirmed { get; set; }
 
 	public string EmailToBeConfirmed { get; set; }
-
+	
+	public bool IsMobilePhoneInvalid { get; set; }
+	
 	public long? MobilePhone { get; set; }
 
 	public bool IsMobilePhoneConfirmed { get; set; }
-
-	public bool IsMobilePhoneInvalid { get; set; }
 
 	public long? MobilePhoneToBeConfirmed { get; set; }
 
@@ -51,7 +51,7 @@ public class Customer
 		}
 	}
 
-	private void SetMobilePhoneToBeConfirmed(long? phoneToBeConfirmed)
+	public void SetMobilePhoneToBeConfirmed(long? phoneToBeConfirmed)
 	{
 		MobilePhoneToBeConfirmed = phoneToBeConfirmed;
 		if (phoneToBeConfirmed == null)
