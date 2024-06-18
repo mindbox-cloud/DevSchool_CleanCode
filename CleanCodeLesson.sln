@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanCodeLesson", "CleanCodeLesson\CleanCodeLesson.csproj", "{D14586FC-E0A5-442B-9945-8E68A18640AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanCodeLesson.Tests", "CleanCodeLesson.Tests\CleanCodeLesson.Tests.csproj", "{0318D7F4-840C-4EB3-B7F1-C1279C04528E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{D14586FC-E0A5-442B-9945-8E68A18640AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D14586FC-E0A5-442B-9945-8E68A18640AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D14586FC-E0A5-442B-9945-8E68A18640AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0318D7F4-840C-4EB3-B7F1-C1279C04528E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0318D7F4-840C-4EB3-B7F1-C1279C04528E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0318D7F4-840C-4EB3-B7F1-C1279C04528E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0318D7F4-840C-4EB3-B7F1-C1279C04528E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

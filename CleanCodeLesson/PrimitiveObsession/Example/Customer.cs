@@ -20,8 +20,6 @@ public class Customer
 
 	public string EmailToBeConfirmed { get; set; }
 
-	public bool HasMobilePhoneAccess { get; set; }
-
 	public long? MobilePhone { get; set; }
 
 	public bool IsMobilePhoneConfirmed { get; set; }
@@ -42,7 +40,6 @@ public class Customer
 			MobilePhone = null;
 			IsMobilePhoneConfirmed = false;
 			SetMobilePhoneToBeConfirmed(null);
-			HasMobilePhoneAccess = false;
 		}
 		else
 		{
@@ -55,7 +52,7 @@ public class Customer
 		}
 	}
 
-	public void SetMobilePhoneToBeConfirmed(long? phoneToBeConfirmed)
+	private void SetMobilePhoneToBeConfirmed(long? phoneToBeConfirmed)
 	{
 		MobilePhoneToBeConfirmed = phoneToBeConfirmed;
 		if (phoneToBeConfirmed == null)
@@ -75,7 +72,6 @@ public class Customer
 		if (phone == null)
 		{
 			MobilePhone = null;
-			HasMobilePhoneAccess = false;
 			IsMobilePhoneConfirmed = false;
 			SetMobilePhoneToBeConfirmed(null);
 		}
@@ -102,7 +98,6 @@ public class Customer
 		MobilePhone = null;
 		IsMobilePhoneConfirmed = false;
 		IsMobilePhoneInvalid = false;
-		HasMobilePhoneAccess = false;
 
 		if (clearToBeConfirmed)
 		{
