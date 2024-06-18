@@ -1,0 +1,2 @@
+- [Customer.cs](https://github.com/mindbox-cloud/DirectCRM/blob/75f4b406af765d910ca260e0785511a1c4d9d8de/Product/DirectCrm/DirectCrm.Core/Customers/Customer.cs)
+- [PhoneExtensions.cs](https://github.com/mindbox-cloud/DirectCRM/blob/2e7ab0cf6a9ec32a453d0bbe17cd40d92f4b38b0/Product/DirectCrm/DirectCrm.Core/Customers/PhoneExtensions.cs)
