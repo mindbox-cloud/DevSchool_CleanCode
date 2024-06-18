@@ -32,7 +32,6 @@ public class Customer
 
 	public void TryParseAndSetMobilePhoneOrMobilePhoneToBeConfirmed(
 		string phone,
-		bool isForAllowedCountries,
 		bool shouldConfirm)
 	{
 		if (string.IsNullOrWhiteSpace(phone))
@@ -43,7 +42,7 @@ public class Customer
 		}
 		else
 		{
-			var phoneValue = phone.TryParsePhone(isForAllowedCountries);
+			var phoneValue = phone.TryParsePhone();
 			if (phoneValue != null)
 			{
 				SetMobilePhoneOrMobilePhoneToBeConfirmed(
