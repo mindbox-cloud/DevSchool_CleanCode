@@ -24,4 +24,6 @@ public class Customer
     public bool IsMobilePhoneInvalid { get; set; }
     
     public long? MobilePhoneToBeConfirmed { get; set; }
+    
+    public string MobilePhoneConfirmationCode { get; set; }
 }
