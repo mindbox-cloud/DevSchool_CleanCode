@@ -14,7 +14,7 @@ public class ProductPlan
     public decimal CalculateForPeriod(DateTime from, DateTime to)
     {
         var days = (to - from).Days;
-        var sum = Services.Sum(z => z.DaylyCost) * days;
+        var sum = Services.Sum(z => z.DailyCost) * days;
 
         return sum;
     }
@@ -24,5 +24,5 @@ public class Service
 {
     public string Name { get; private set; }
 
-    public decimal DaylyCost { get; private set; }
+    public decimal DailyCost { get; private set; }
 }
