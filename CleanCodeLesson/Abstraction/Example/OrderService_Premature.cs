@@ -20,6 +20,7 @@ public class OrdersProcessor
 
         if (customer.Address == null) throw new ArgumentNullException(customer.Address);
 
+        //premature
         var sum = dishes.Sum(z => z.Price);
         sum = CalculateDiscount(customer, sum, true);
 
