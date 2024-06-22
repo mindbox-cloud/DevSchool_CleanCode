@@ -23,24 +23,27 @@ public class OrdersProcessor
 
         //premature
         var sum = dishes.Sum(z => z.Price);
-        sum = CalculateDiscount(customer, sum, true);
+        if (customer.TotalMoneySpent > 2000)
+        {
+            sum *= 0.9m;
+        }
 
+        if (customer.TotalMoneySpent > 5000)
+        {
+            sum *= 0.8m;
+        }
+        //premature
+        
+        sum *= 1.1m;
+        
         return new Order(Guid.NewGuid(), customerId, sum);
     }
     
-    //мы ж не будем так писать, мы сделаем дубль
     public async Task<Order> CreateOfflineOrder(Guid customerId, IEnumerable<Dish> dishes)
     {
         var customer = await _customerRepository.GetById(customerId);
 
         var sum = dishes.Sum(z => z.Price);
-        sum = CalculateDiscount(customer, sum, false);
-
-        return new Order(Guid.NewGuid(), customerId, sum);
-    }
-
-    private static decimal CalculateDiscount(Customer customer, decimal sum, bool isOnline)
-    {
         if (customer.TotalMoneySpent > 2000)
         {
             sum *= 0.9m;
@@ -51,9 +54,7 @@ public class OrdersProcessor
             sum *= 0.8m;
         }
 
-        if (isOnline) sum *= 1.1m;
-
-        return sum;
+        return new Order(Guid.NewGuid(), customerId, sum);
     }
 
     private static void ValidateCustomer(Customer customer)
