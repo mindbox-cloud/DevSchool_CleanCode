@@ -14,6 +14,7 @@ public class OrdersProcessor
         _customerRepository = customerRepository;
     }
 
+    //добавьте рассчет скидки в оба вида заказа.
     public async Task<Order> CreateOnlineOrder(Guid customerId, IEnumerable<Dish> dishes)
     {
         var customer = await _customerRepository.GetById(customerId);
