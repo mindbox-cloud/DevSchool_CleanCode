@@ -1,13 +1,18 @@
-﻿namespace CleanCodeLesson.PrimitiveObsession.Example;
-
-using Itc.DirectCrm.Model;
+﻿namespace CleanCodeLesson.Examples.PrimitiveObsession;
 
 public sealed record PhoneNumber
 {
-    private PhoneNumber(string number) => Number = number;
+    private PhoneNumber(string number)
+    {
+        Number = number;
+    }
+
     public string Number { get; }
 
-    public static PhoneNumber Parse(string value) => new(value.TryParsePhone().ToString() ?? throw new ArgumentException(value, nameof(value)));
+    public static PhoneNumber Parse(string value)
+    {
+        return new PhoneNumber(value.TryParsePhone().ToString() ?? throw new ArgumentException(value, nameof(value)));
+    }
 }
 
 public sealed record ConfirmedPhone(PhoneNumber Phone);
@@ -25,9 +30,15 @@ public sealed record AwaitingConfirmationPhone(PhoneNumber PhoneNumber, Confirma
 
 public sealed record ConfirmationCode(string Code)
 {
-    public static ConfirmationCode Generate(int length = 4) => new(MobilePhoneConfirmationCodeGenerator.Generate(length));
+    public static ConfirmationCode Generate(int length = 4)
+    {
+        return new ConfirmationCode(MobilePhoneConfirmationCodeGenerator.Generate(length));
+    }
 
-    public static implicit operator ConfirmationCode(string code) => new(code);
+    public static implicit operator ConfirmationCode(string code)
+    {
+        return new ConfirmationCode(code);
+    }
 }
 
 public class Customer

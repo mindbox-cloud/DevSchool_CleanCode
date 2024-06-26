@@ -21,7 +21,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\CleanCodeLesson\CleanCodeLesson.csproj" />
+        <ProjectReference Include="..\CleanCodeLesson\CleanCodeLesson.csproj"/>
     </ItemGroup>
 
 </Project>

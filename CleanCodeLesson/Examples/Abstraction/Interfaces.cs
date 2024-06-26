@@ -1,4 +1,4 @@
-namespace CleanCodeLesson.Abstraction.Example;
+namespace CleanCodeLesson.Examples.Abstraction;
 
 public interface ICustomerRepository
 {

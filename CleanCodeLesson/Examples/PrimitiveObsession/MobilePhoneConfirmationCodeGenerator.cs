@@ -1,4 +1,4 @@
-﻿namespace CleanCodeLesson.PrimitiveObsession.Example;
+﻿namespace CleanCodeLesson.Examples.PrimitiveObsession;
 
 using System.Globalization;
 using System.Security.Cryptography;
@@ -27,7 +27,7 @@ public static class MobilePhoneConfirmationCodeGenerator
         if (minValue > maxValue)
             throw new ArgumentException("Минимальное значение не может быть больше максимального.");
 
-        if ((minValue == long.MinValue) && (maxValue == long.MaxValue))
+        if (minValue == long.MinValue && maxValue == long.MaxValue)
             return generator.GetRandomInt64();
 
         var valueCount = unchecked((ulong)(maxValue - minValue + 1));

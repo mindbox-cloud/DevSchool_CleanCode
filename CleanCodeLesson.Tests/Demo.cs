@@ -1,18 +1,18 @@
 namespace CleanCodeLesson.Tests;
 
-using PrimitiveObsession.Example;
+using Examples.PrimitiveObsession;
 
 [TestClass]
-public class CustomerTests
+public class DemoTests
 {
     [TestMethod]
-    public void ShouldAddPhoneForConfirmation()
+    public void DemoTest()
     {
         // Arrange
         var customer = new Customer();
 
         var phone = PhoneNumber.Parse("79275612023");
-        
+
         customer.AddUnconfirmedPhone(phone);
 
         var code = customer.AwaitingConfirmationPhone.ConfirmationCode;

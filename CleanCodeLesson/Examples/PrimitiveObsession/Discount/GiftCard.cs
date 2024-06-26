@@ -1,4 +1,4 @@
-namespace CleanCodeLesson.PrimitiveObsession.Example.Discount;
+namespace CleanCodeLesson.Examples.PrimitiveObsession.Discount;
 
 public class GiftCard
 {

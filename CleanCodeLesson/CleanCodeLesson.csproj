@@ -6,8 +6,4 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
-      <Folder Include="PrimitiveObsession\Exercises\2_Book\" />
-    </ItemGroup>
-
 </Project>
