@@ -1,6 +1,6 @@
 namespace CleanCodeLesson.Examples.PrimitiveObsession;
 
-public class Demo
+public class Customer
 {
     //Пришли в маэстру, а там нет миддл нейма
     public string FirstName { get; set; }

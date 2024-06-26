@@ -1,4 +1,4 @@
-﻿namespace CleanCodeLesson.Examples.PrimitiveObsession;
+﻿namespace CleanCodeLesson.Examples.PrimitiveObsession.Solution;
 
 public sealed record PhoneNumber
 {
