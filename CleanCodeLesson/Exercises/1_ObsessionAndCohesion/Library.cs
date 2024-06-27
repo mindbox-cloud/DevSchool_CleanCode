@@ -72,7 +72,7 @@ public sealed class Book
     public required Identifier Identifier { get; set; }
     public required Title Title { get; set; }
     public required Author Author { get; set; }
-    public required Edition Edition { get; set; }
+    public Edition? Edition { get; set; }
 }
 
 public class Library
