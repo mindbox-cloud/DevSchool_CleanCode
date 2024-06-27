@@ -2,12 +2,48 @@ namespace CleanCodeLesson.Exercises.VO;
 
 //Инкапсулируйте код
 
+
+public record Identifier
+{
+    public readonly string Value;
+    public Identifier(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value) || value.Length != 13 || !value.All(char.IsDigit))
+            throw new ArgumentException("Invalid Id");
+        Value = value;
+    }
+}
+
+public record Title
+{
+    public readonly string Value;
+    public Title(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value) || value.Length > 100)
+            throw new ArgumentException("Invalid Title");
+        Value = value;
+    }
+}
+
+public record Author
+{
+    public readonly string AuthorFirstName;
+    public readonly string AuthorLastName;
+    public Author(string authorFirstName, string authorLastName)
+    {
+        if (string.IsNullOrWhiteSpace(authorFirstName) || string.IsNullOrWhiteSpace(authorLastName))
+            throw new ArgumentException("Invalid Author Name");
+
+        AuthorFirstName = authorFirstName;
+        AuthorLastName = authorLastName;
+    }
+}
+
 public sealed class Book
 {
-    public required string Identifier { get; set; }
-    public required string Title { get; set; }
-    public required string AuthorFirstName { get; set; }
-    public required string AuthorLastName { get; set; }
+    public required Identifier Identifier { get; set; }
+    public required Title Title { get; set; }
+    public required Author Author { get; set; }
     public int PublicationYear { get; set; }
     public int Edition { get; set; }
 
@@ -29,15 +65,7 @@ public class Library
 
     public void AddBook(Book book)
     {
-        if (string.IsNullOrWhiteSpace(book.Identifier) || book.Identifier.Length != 13 || !book.Identifier.All(char.IsDigit))
-            throw new ArgumentException("Invalid Id");
-
-        if (string.IsNullOrWhiteSpace(book.Title) || book.Title.Length > 100)
-            throw new ArgumentException("Invalid Title");
-
-        if (string.IsNullOrWhiteSpace(book.AuthorFirstName) || string.IsNullOrWhiteSpace(book.AuthorLastName))
-            throw new ArgumentException("Invalid Author Name");
-
+        
         if (book.Edition < 0)
             throw new ArgumentException("Edition is below zero");
 
