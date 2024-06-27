@@ -4,10 +4,47 @@ namespace CleanCodeLesson.Exercises.VO;
 
 public sealed class Book
 {
+    public BookIdentifier Identifier { get; set; }
+    public Author Author { get; set; }
+    public BookInfo Info { get; set; }
+}
+
+public record BookIdentifier
+{
+    public BookIdentifier(string identifier, string title)
+    {
+        if (string.IsNullOrWhiteSpace(identifier) || identifier.Length != 13 ||
+            !identifier.All(char.IsDigit))
+            throw new ArgumentException("Invalid Id");
+
+        if (string.IsNullOrWhiteSpace(title) || title.Length > 100)
+            throw new ArgumentException("Invalid Title");
+    }
+
     public required string Identifier { get; set; }
     public required string Title { get; set; }
-    public required string AuthorFirstName { get; set; }
-    public required string AuthorLastName { get; set; }
+}
+
+public record Author
+{
+    public Author(string firstName, string lastName)
+    {
+        if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName))
+            throw new ArgumentException("Invalid Author Name");
+    }
+}
+
+public record BookInfo
+{
+    public BookInfo(int publicationYear, int edition)
+    {
+        if (edition < 0)
+            throw new ArgumentException("Edition is below zero");
+
+        if (publicationYear < 1450 || publicationYear > DateTime.Now.Year)
+            throw new ArgumentException("Invalid Publication Year");
+    }
+
     public int PublicationYear { get; set; }
     public int Edition { get; set; }
 
@@ -29,21 +66,6 @@ public class Library
 
     public void AddBook(Book book)
     {
-        if (string.IsNullOrWhiteSpace(book.Identifier) || book.Identifier.Length != 13 || !book.Identifier.All(char.IsDigit))
-            throw new ArgumentException("Invalid Id");
-
-        if (string.IsNullOrWhiteSpace(book.Title) || book.Title.Length > 100)
-            throw new ArgumentException("Invalid Title");
-
-        if (string.IsNullOrWhiteSpace(book.AuthorFirstName) || string.IsNullOrWhiteSpace(book.AuthorLastName))
-            throw new ArgumentException("Invalid Author Name");
-
-        if (book.Edition < 0)
-            throw new ArgumentException("Edition is below zero");
-
-        if (book.PublicationYear < 1450 || book.PublicationYear > DateTime.Now.Year)
-            throw new ArgumentException("Invalid Publication Year");
-
         _books.Add(book);
     }
 }
