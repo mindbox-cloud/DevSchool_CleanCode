@@ -1,24 +1,78 @@
 namespace CleanCodeLesson.Exercises.VO;
 
-//Инкапсулируйте код
-
-public sealed class Book
+public record Identifier
 {
-    public required string Identifier { get; set; }
-    public required string Title { get; set; }
-    public required string AuthorFirstName { get; set; }
-    public required string AuthorLastName { get; set; }
+    public string Value { get; set; }
+    public Identifier(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value) || value.Length != 13 || !value.All(char.IsDigit))
+            throw new ArgumentException("Invalid Id");
+
+        Value = value;
+    }
+}
+
+public record Title
+{
+    public string Value { get; set; }
+
+    public Title(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value) || value.Length > 100)
+            throw new ArgumentException("Invalid Title");
+
+        Value = value;
+    }
+}
+
+public record Author
+{
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+
+    public Author(string firstName, string lastName)
+    {
+        if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName))
+            throw new ArgumentException("Invalid Author Name");
+
+        FirstName = firstName;
+        LastName = lastName;
+    }
+}
+
+public record Edition
+{
+    public Edition(int editionValue, int publicationYear)
+    {
+        if (editionValue < 0)
+            throw new ArgumentException("Edition is below zero");
+
+        if (publicationYear < 1450 || publicationYear > DateTime.Now.Year)
+            throw new ArgumentException("Invalid Publication Year");
+
+        EditionValue = editionValue;
+        PublicationYear = publicationYear;
+    }
+
+    public int EditionValue { get; set; }
     public int PublicationYear { get; set; }
-    public int Edition { get; set; }
 
     public void UpdateEdition(int edition, int publicationYear)
     {
-        if (Edition < 0) throw new ArgumentException("Edition is below zero");
-        if (PublicationYear < 0) throw new ArgumentException("Invalid Publication Year");
+        if (edition < 0) throw new ArgumentException("Edition is below zero");
+        if (publicationYear < 0) throw new ArgumentException("Invalid Publication Year");
 
-        Edition = edition;
+        EditionValue = edition;
         PublicationYear = publicationYear;
     }
+}
+
+public sealed class Book
+{
+    public required Identifier Identifier { get; set; }
+    public required Title Title { get; set; }
+    public required Author Author { get; set; }
+    public required Edition Edition { get; set; }
 }
 
 public class Library
@@ -29,21 +83,6 @@ public class Library
 
     public void AddBook(Book book)
     {
-        if (string.IsNullOrWhiteSpace(book.Identifier) || book.Identifier.Length != 13 || !book.Identifier.All(char.IsDigit))
-            throw new ArgumentException("Invalid Id");
-
-        if (string.IsNullOrWhiteSpace(book.Title) || book.Title.Length > 100)
-            throw new ArgumentException("Invalid Title");
-
-        if (string.IsNullOrWhiteSpace(book.AuthorFirstName) || string.IsNullOrWhiteSpace(book.AuthorLastName))
-            throw new ArgumentException("Invalid Author Name");
-
-        if (book.Edition < 0)
-            throw new ArgumentException("Edition is below zero");
-
-        if (book.PublicationYear < 1450 || book.PublicationYear > DateTime.Now.Year)
-            throw new ArgumentException("Invalid Publication Year");
-
         _books.Add(book);
     }
 }
