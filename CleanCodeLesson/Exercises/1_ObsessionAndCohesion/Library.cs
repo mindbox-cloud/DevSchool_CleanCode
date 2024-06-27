@@ -39,22 +39,35 @@ public record Author
     }
 }
 
+public record Edition
+{
+    public int Number { get; private set; }
+    public int PublicationYear  { get; private set; }
+
+    public Edition(int number, int publicationYear)
+    {
+        UpdateEdition(number, publicationYear);
+    }
+
+    public void UpdateEdition(int number, int publicationYear)
+    {
+        if (Number < 0)
+            throw new ArgumentException("Edition is below zero");
+
+        if (PublicationYear < 1450 || PublicationYear > DateTime.Now.Year && PublicationYear < 0)
+            throw new ArgumentException("Invalid Publication Year");
+        
+        Number = number;
+        PublicationYear = publicationYear;
+    }
+}
+
 public sealed class Book
 {
     public required Identifier Identifier { get; set; }
     public required Title Title { get; set; }
     public required Author Author { get; set; }
-    public int PublicationYear { get; set; }
-    public int Edition { get; set; }
-
-    public void UpdateEdition(int edition, int publicationYear)
-    {
-        if (Edition < 0) throw new ArgumentException("Edition is below zero");
-        if (PublicationYear < 0) throw new ArgumentException("Invalid Publication Year");
-
-        Edition = edition;
-        PublicationYear = publicationYear;
-    }
+    public required Edition Edition { get; set; }
 }
 
 public class Library
@@ -65,13 +78,6 @@ public class Library
 
     public void AddBook(Book book)
     {
-        
-        if (book.Edition < 0)
-            throw new ArgumentException("Edition is below zero");
-
-        if (book.PublicationYear < 1450 || book.PublicationYear > DateTime.Now.Year)
-            throw new ArgumentException("Invalid Publication Year");
-
         _books.Add(book);
     }
 }
