@@ -15,19 +15,16 @@ public class OrdersProcessor
         _customerRepository = customerRepository;
     }
 
-    //добавьте рассчет скидки в оба вида заказа.
     public async Task<Order> CreateOnlineOrder(Guid customerId, IEnumerable<Dish> dishes)
     {
         var customer = await _customerRepository.GetById(customerId);
 
         if (customer.Address == null) throw new ArgumentNullException(customer.Address);
-
-        //premature
+        
         var sum = dishes.Sum(z => z.Price);
         if (customer.TotalMoneySpent > 2000) sum *= 0.9m;
 
         if (customer.TotalMoneySpent > 5000) sum *= 0.8m;
-        //premature
 
         sum *= 1.1m;
 
