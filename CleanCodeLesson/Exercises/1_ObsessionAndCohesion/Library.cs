@@ -2,6 +2,13 @@ namespace CleanCodeLesson.Exercises.VO;
 
 //Инкапсулируйте код
 
+public sealed class OldBook()
+{
+    public BookIdentifier Identifier { get; set; }
+    public Author Author { get; set; }
+    public OldBookInfo Info { get; set; }
+}
+
 public sealed class Book
 {
     public BookIdentifier Identifier { get; set; }
@@ -32,6 +39,18 @@ public record Author
         if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName))
             throw new ArgumentException("Invalid Author Name");
     }
+}
+
+public record OldBookInfo
+{
+    public OldBookInfo(int StartYear, int EndYear)
+    {
+        this.StartYear = StartYear;
+        this.EndYear = EndYear;
+    }
+
+    public int StartYear { get; init; }
+    public int EndYear { get; init; }
 }
 
 public record BookInfo
