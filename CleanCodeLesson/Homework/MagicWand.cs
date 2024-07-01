@@ -38,9 +38,60 @@ public record FlexabilityСoefficient
     }
 }
 
+public record Price
+{
+    public Price(decimal value)
+    {
+        Value = value;
+        if (Value < 0)
+            throw new ValidationException("Price cannot be negative");
+    }
+
+    public decimal Value { get; }
+}
+
+public record Wood
+{
+    public static Wood Taxus => new Wood(0.2m); // Тис
+    public static Wood Holy => new Wood(0.2m); // Остролист
+    public static Wood Cedrus => new Wood(0.3m); // Кедр
+    public static Wood Oak => new Wood(0.4m); // Дуб
+    
+    private Wood(decimal price)
+    {
+        Price = new Price(price);
+    }
+
+    public Price Price { get; }
+}
+
+public record Core
+{
+    public static Core DragonHeartstring => new Core(2m);
+    public static Core UnicornHorn => new Core(1.6m);
+    public static Core PhoenixFeather => new Core(4m);
+    
+    private Core(decimal price)
+    {
+        Price = new Price(price);
+    }
+
+    public Price Price { get; }
+}
+
 
 public record MagicWand
 {
+    public MagicWand(Length length, FlexabilityСoefficient flexabilityСoefficient, Wood wood, Core core)
+    {
+        Length = length;
+        FlexabilityСoefficient = flexabilityСoefficient;
+        Wood = wood;
+        Core = core;
+    }
+
     public Length Length { get; }
     public FlexabilityСoefficient FlexabilityСoefficient { get; }
+    public Wood Wood { get; }
+    public Core Core { get; }
 }
