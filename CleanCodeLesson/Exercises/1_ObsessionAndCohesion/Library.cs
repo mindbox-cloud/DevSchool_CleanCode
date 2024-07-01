@@ -1,5 +1,7 @@
 namespace CleanCodeLesson.Exercises.VO;
 
+public interface IBook {}
+
 public record Identifier
 {
     public string Value { get; set; }
@@ -67,7 +69,29 @@ public record Edition
     }
 }
 
-public sealed class Book
+public record PublicationRange
+{
+    public int MinPublicationYear { get; set; }
+    public int MaxPublicationYear { get; set; }
+    public PublicationRange(int minYear, int maxYear)
+    {
+        if (minYear < 0) throw new ArgumentException("Invalid min publication year");
+        if (maxYear > 1450) throw new ArgumentException("Invalid max publication year");
+
+        MinPublicationYear = minYear;
+        MaxPublicationYear = maxYear;
+    }
+}
+
+public sealed class OldBook : IBook
+{
+    public required Identifier Identifier { get; set; }
+    public required Title Title { get; set; }
+    public required Author Author { get; set; }
+    public required PublicationRange PublicationRange { get; set; }
+}
+
+public sealed class Book : IBook
 {
     public required Identifier Identifier { get; set; }
     public required Title Title { get; set; }
@@ -75,13 +99,14 @@ public sealed class Book
     public Edition? Edition { get; set; }
 }
 
+
 public class Library
 {
-    private readonly IList<Book> _books = new List<Book>();
+    private readonly IList<IBook> _books = new List<IBook>();
 
-    public IEnumerable<Book> Books => _books;
+    public IEnumerable<IBook> Books => _books;
 
-    public void AddBook(Book book)
+    public void AddBook(IBook book)
     {
         _books.Add(book);
     }
