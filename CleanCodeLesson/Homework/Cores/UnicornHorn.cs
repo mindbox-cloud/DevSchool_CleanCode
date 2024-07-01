@@ -4,7 +4,7 @@ public record UnicornHorn : ICore
 {
     private readonly decimal _basePrice = 1.6m;
     
-    public Age Age { get; set; }
+    public Age Age { get; init; }
     
     public UnicornHorn(Age age)
     {
