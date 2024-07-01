@@ -14,4 +14,9 @@ public class MagicWand
         Wood = wood;
         Core = core;
     }
+
+    public decimal CalculatePrice()
+    {
+        return Wood.CalculatePrice() + Core.CalculatePrice();
+    }
 }
