@@ -1,4 +1,4 @@
-namespace CleanCodeLesson.Homework;
+namespace CleanCodeLesson.Homework.Sales;
 
 public abstract record MagicWand(Length Length, FlexibilityCoefficient Coefficient, Wood Wood)
 {
