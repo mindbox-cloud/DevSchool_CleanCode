@@ -1,22 +1,43 @@
 namespace CleanCodeLesson.Homework;
 
-public class MagicWand
+public abstract record MagicWand(Length Length, FlexibilityCoefficient Coefficient, Wood Wood)
 {
-    public Length Length { get; init; }
-    public FlexibilityCoefficient FlexibilityCoefficient { get; init; }
-    public Wood Wood { get; init; }
-    public Core Core { get; init; }
+    public abstract Price Price { get; }
+}
 
-    public MagicWand(Length length, FlexibilityCoefficient coefficient, Wood wood, Core core)
+public record RegularMagicWand : MagicWand
+{
+    public Core Core { get; init; }
+    public override Price Price { get; }
+
+    public RegularMagicWand(Length length, FlexibilityCoefficient coefficient, Wood wood, Core core) 
+        : base(length, coefficient, wood)
     {
-        Length = length;
-        FlexibilityCoefficient = coefficient;
-        Wood = wood;
         Core = core;
+        Price = CalculatePrice();
     }
 
-    public Price CalculatePrice()
+    private Price CalculatePrice()
     {
         return Wood.Price + Core.Price;
+    }
+}
+
+public record Owner(string FirstName, string LastName);
+
+public record OwnersHistory(List<Owner> Owners);
+
+public record CollectibleMagicWand : MagicWand
+{
+    public Core? Core { get; init; }
+    public OwnersHistory OwnersHistory { get; init; }
+    public override Price Price { get;}
+
+    public CollectibleMagicWand(Length length, FlexibilityCoefficient coefficient, Wood wood, Core? core, OwnersHistory history, Price price) 
+        : base(length, coefficient, wood)
+    {
+        Core = core;
+        OwnersHistory = history;
+        Price = price;
     }
 }
