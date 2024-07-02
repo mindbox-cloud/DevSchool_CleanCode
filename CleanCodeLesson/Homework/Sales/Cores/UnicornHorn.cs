@@ -1,4 +1,4 @@
-namespace CleanCodeLesson.Homework;
+namespace CleanCodeLesson.Homework.Sales;
 
 public record UnicornHorn(UnicornAge UnicornAge) : Core(new Price(1.6m))
 {

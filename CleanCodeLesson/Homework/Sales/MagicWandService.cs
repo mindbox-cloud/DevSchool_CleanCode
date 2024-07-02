@@ -1,4 +1,4 @@
-﻿namespace CleanCodeLesson.Homework;
+﻿namespace CleanCodeLesson.Homework.Sales;
 
 public class MagicWandService(IMagicWandRepository repository)
 {
