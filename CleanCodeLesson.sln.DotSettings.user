@@ -1,6 +1,6 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5806c963_002D499c_002D40a3_002Da07b_002D366bf84ee33c/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CustomerTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
-    &lt;TestId&gt;MSTest::0318D7F4-840C-4EB3-B7F1-C1279C04528E::net8.0::CleanCodeLesson.Tests.CustomerTests&lt;/TestId&gt;
+    &lt;TestId&gt;MSTest::0318D7F4-840C-4EB3-B7F1-C1279C04528E::net8.0::CleanCodeLesson.Tests.MagicWandTests.CalculatingPrice_ReturnsCorrectSum&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
