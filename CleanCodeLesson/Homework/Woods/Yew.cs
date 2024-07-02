@@ -1,6 +1,3 @@
 namespace CleanCodeLesson.Homework;
 
-public record Yew : IWood
-{
-    public decimal CalculatePrice() => 0.2m;
-}
+public record Yew() : Wood(new Price(0.2m));

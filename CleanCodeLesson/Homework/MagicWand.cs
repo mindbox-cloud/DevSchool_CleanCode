@@ -4,10 +4,10 @@ public class MagicWand
 {
     public Length Length { get; init; }
     public FlexibilityCoefficient FlexibilityCoefficient { get; init; }
-    public IWood Wood { get; init; }
-    public ICore Core { get; init; }
+    public Wood Wood { get; init; }
+    public Core Core { get; init; }
 
-    public MagicWand(Length length, FlexibilityCoefficient coefficient, IWood wood, ICore core)
+    public MagicWand(Length length, FlexibilityCoefficient coefficient, Wood wood, Core core)
     {
         Length = length;
         FlexibilityCoefficient = coefficient;
@@ -15,8 +15,8 @@ public class MagicWand
         Core = core;
     }
 
-    public decimal CalculatePrice()
+    public Price CalculatePrice()
     {
-        return Wood.CalculatePrice() + Core.CalculatePrice();
+        return Wood.Price + Core.Price;
     }
 }
