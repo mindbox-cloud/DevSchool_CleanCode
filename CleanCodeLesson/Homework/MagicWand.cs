@@ -48,6 +48,8 @@ public record Price
     }
 
     public decimal Value { get; }
+    
+    public static Price operator +(Price first, Price second) => new (first.Value + second.Value);
 }
 
 public record Wood
@@ -94,8 +96,8 @@ public record MagicWand
     public Wood Wood { get; }
     public Core Core { get; }
 
-    public decimal CalculatePrice()
+    public Price CalculatePrice()
     {
-        return Wood.Price.Value + Core.Price.Value;
+        return Wood.Price + Core.Price;
     }
 }

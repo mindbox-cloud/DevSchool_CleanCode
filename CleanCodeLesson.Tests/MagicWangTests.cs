@@ -20,7 +20,7 @@ public class MagicWandTests
         var actualPrice = wand.CalculatePrice();
         
         //Assert
-        actualPrice.Should().Be(expectedPrice);
+        actualPrice.Value.Should().Be(expectedPrice);
     }
     
     public static IEnumerable<object[]> MagicWandTestData()
