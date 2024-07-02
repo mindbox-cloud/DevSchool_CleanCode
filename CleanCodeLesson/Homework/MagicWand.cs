@@ -52,14 +52,14 @@ public record Price
 
 public record Wood
 {
-    public static Wood Taxus => new(0.2m); // Тис
-    public static Wood Holy => new(0.2m); // Остролист
-    public static Wood Cedrus => new(0.3m); // Кедр
-    public static Wood Oak => new(0.4m); // Дуб
+    public static Wood Taxus => new(new Price(0.2m)); // Тис
+    public static Wood Holy => new(new Price(0.2m)); // Остролист
+    public static Wood Cedrus => new(new Price(0.3m)); // Кедр
+    public static Wood Oak => new(new Price(0.4m)); // Дуб
 
-    private Wood(decimal price)
+    private Wood(Price price)
     {
-        Price = new Price(price);
+        Price = price;
     }
 
     public Price Price { get; }
@@ -67,13 +67,13 @@ public record Wood
 
 public record Core
 {
-    public static Core DragonHeartstring => new Core(2m);
-    public static Core UnicornHorn => new Core(1.6m);
-    public static Core PhoenixFeather => new Core(4m);
+    public static Core DragonHeartstring => new(new Price(2m));
+    public static Core UnicornHorn => new (new Price(1.6m));
+    public static Core PhoenixFeather => new (new Price(4m));
 
-    private Core(decimal price)
+    private Core(Price price)
     {
-        Price = new Price(price);
+        Price = price;
     }
 
     public Price Price { get; }
