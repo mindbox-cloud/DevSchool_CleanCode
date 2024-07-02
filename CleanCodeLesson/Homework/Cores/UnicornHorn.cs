@@ -1,6 +1,3 @@
 namespace CleanCodeLesson.Homework;
 
-public record UnicornHorn : ICore
-{
-    public decimal CalculatePrice() => 1.6m;
-}
+public record UnicornHorn() : Core(new Price(1.6m));

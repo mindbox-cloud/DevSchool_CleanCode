@@ -1,6 +1,3 @@
 namespace CleanCodeLesson.Homework;
 
-public record PhoenixFeather : ICore
-{
-    public decimal CalculatePrice() => 4m;
-}
+public record PhoenixFeather() : Core(new Price(4m));
