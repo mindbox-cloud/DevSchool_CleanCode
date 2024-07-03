@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Xml;
 
 namespace CleanCodeLesson.Homework;
 
@@ -50,6 +51,7 @@ public record Price
     public decimal Value { get; }
     
     public static Price operator +(Price first, Price second) => new (first.Value + second.Value);
+    public static Price operator *(Price first, decimal second) => new (first.Value * second);
 }
 
 public record Wood
@@ -90,8 +92,29 @@ public interface ICore
     public Price Price { get; }
 }
 
+public record DragonType
+{
+    public static DragonType HungarianHorntail => new DragonType(2.25m);
+    public static DragonType ChineseFireball => new DragonType(1.45m);
+    public static DragonType RomaniamLonghorn => new DragonType(1m);
+    public static DragonType NorwegianRidgeback => new DragonType(0.92m);
+    
+    private DragonType(decimal priceModifier)
+    {
+        PriceModifier = priceModifier;
+    }
+
+    public decimal PriceModifier { get; }
+}
+
 public record DragonHeartstringCore : ICore
 {
+    public DragonHeartstringCore(DragonType dragonType)
+    {
+        var basePrice = new Price(2m);
+        Price = basePrice * dragonType.PriceModifier;
+    }
+    
     public Price Price { get; } = new(2m);
 }
 
@@ -108,7 +131,7 @@ public record UnicornHornCore : ICore
 
         if (unicornAge.Value > 100)
         {
-            Price = new Price(Price.Value * (unicornAge.Value / 100m));
+            Price *= (unicornAge.Value / 100m);
         }
     }
     
