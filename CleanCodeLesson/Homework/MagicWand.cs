@@ -67,23 +67,59 @@ public record Wood
     public Price Price { get; }
 }
 
-public record Core
+public record UnicornAge
 {
-    public static Core DragonHeartstring => new(new Price(2m));
-    public static Core UnicornHorn => new (new Price(1.6m));
-    public static Core PhoenixFeather => new (new Price(4m));
-
-    private Core(Price price)
+    private const int _lowerBoundIncluded = 20;
+    private const int _upperBoundIncluded = 300;
+    
+    public UnicornAge(int value)
     {
-        Price = price;
+        Value = value;
+        if (Value < _lowerBoundIncluded && Value > _upperBoundIncluded)
+        {
+            throw new ValidationException(
+                $"Age should be between {_lowerBoundIncluded} and {_upperBoundIncluded}");
+        }
     }
 
+    public int Value { get; }
+}
+
+public interface ICore
+{
     public Price Price { get; }
 }
 
+public record DragonHeartstringCore : ICore
+{
+    public Price Price { get; } = new(2m);
+}
+
+public record PhoenixFeatherCore : ICore
+{
+    public Price Price { get; } = new(4m);
+}
+
+public record UnicornHornCore : ICore
+{
+    public UnicornHornCore(UnicornAge unicornAge)
+    {
+        Price = new Price(1.6m);
+
+        if (unicornAge.Value > 100)
+        {
+            Price = new Price(Price.Value * (unicornAge.Value / 100m));
+        }
+    }
+    
+    public Price Price { get; }
+}
+    
+
+
 public record MagicWand
 {
-    public MagicWand(Length length, FlexibilityСoefficient flexibilityСoefficient, Wood wood, Core core)
+    public MagicWand(Length length, FlexibilityСoefficient flexibilityСoefficient, Wood wood, ICore core)
     {
         Length = length;
         FlexibilityСoefficient = flexibilityСoefficient;
@@ -94,7 +130,8 @@ public record MagicWand
     public Length Length { get; }
     public FlexibilityСoefficient FlexibilityСoefficient { get; }
     public Wood Wood { get; }
-    public Core Core { get; }
+    
+    public ICore Core { get; }
 
     public Price CalculatePrice()
     {
