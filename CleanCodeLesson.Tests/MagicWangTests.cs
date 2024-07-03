@@ -26,10 +26,10 @@ public class MagicWandTests
     
     public static IEnumerable<object[]> MagicWandTestData()
     {
-        yield return [25, 0.1, Wood.Oak, new DragonHeartstringCore(DragonType.RomaniamLonghorn), 2.4m];
         yield return [30, 0.15, Wood.Taxus, new UnicornHornCore(new UnicornAge(20)), 1.8m];
         yield return [30, 0.15, Wood.Taxus, new UnicornHornCore(new UnicornAge(200)), 3.4m];
         yield return [18, 0.05, Wood.Holy, new PhoenixFeatherCore(), 4.2m];
         yield return [50, 0.2, Wood.Cedrus, new DragonHeartstringCore(DragonType.ChineseFireball), 3.2m];
+        yield return [25, 0.1, Wood.Oak, new DragonHeartstringCore(DragonType.RomaniamLonghorn), 2.4m];
     }
 }

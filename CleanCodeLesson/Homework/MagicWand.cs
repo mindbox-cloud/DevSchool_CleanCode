@@ -2,7 +2,7 @@
 
 namespace CleanCodeLesson.Homework;
 
-public record MagicWand
+public record MagicWand : IMagicWand
 {
     public MagicWand(Length length, FlexibilityСoefficient flexibilityСoefficient, Wood wood, ICore core)
     {
