@@ -1,3 +1,4 @@
+using System.Collections.ObjectModel;
 using CleanCodeLesson.Homework.Cores;
 
 namespace CleanCodeLesson.Homework;
@@ -7,11 +8,12 @@ public record CollectibleWand(
     FlexibilityСoefficient flexibilityСoefficient,
     Wood wood,
     ICore? core,
-    Price price,
-    IReadOnlyCollection<WandOwner> owners)
+    Price price)
     : IMagicWand
 {
-
+    private List<WandOwner> owners;
+    public IReadOnlyCollection<WandOwner> Owners => owners;
+    
     public Length Length { get; } = length;
     public FlexibilityСoefficient FlexibilityСoefficient { get; } = flexibilityСoefficient;
     public Wood Wood { get; } = wood;
@@ -20,7 +22,21 @@ public record CollectibleWand(
 
     public Price Price { get; } = price;
 
-    public IReadOnlyCollection<WandOwner> Owners { get; } = owners;
-
     public Price CalculatePrice() => Price;
+
+    public bool TrySell(WandOwner owner)
+    {
+        if (CanBeSold(owner))
+        {
+            owners.Add(owner);
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool CanBeSold(WandOwner owner)
+    {
+        return owner.Age >= 18;
+    }
 }
