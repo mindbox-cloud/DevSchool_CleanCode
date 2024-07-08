@@ -8,11 +8,12 @@ public record CollectibleWand(
     FlexibilityСoefficient flexibilityСoefficient,
     Wood wood,
     ICore? core,
-    Price price)
+    Price price,
+    IReadOnlyCollection<WandOwner> owners)
     : IMagicWand
 {
-    private List<WandOwner> owners;
-    public IReadOnlyCollection<WandOwner> Owners => owners;
+    private List<WandOwner> _owners = owners.ToList();
+    public IReadOnlyCollection<WandOwner> Owners => _owners;
     
     public Length Length { get; } = length;
     public FlexibilityСoefficient FlexibilityСoefficient { get; } = flexibilityСoefficient;
@@ -28,7 +29,7 @@ public record CollectibleWand(
     {
         if (CanBeSold(owner))
         {
-            owners.Add(owner);
+            _owners.Add(owner);
             return true;
         }
 
