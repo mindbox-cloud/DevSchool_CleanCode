@@ -4,7 +4,7 @@ namespace CleanCodeLesson.Homework;
 
 public record Flexibility
 {
-    public double Value { get; init; }
+    public double Value { get; }
 
     public Flexibility(double value)
     {

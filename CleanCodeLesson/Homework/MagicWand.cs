@@ -1,9 +1,10 @@
 namespace CleanCodeLesson.Homework;
 
-public class MagicWand()
+public record MagicWand(
+    Length Length, 
+    Flexibility Flexibility, 
+    Wood Wood, 
+    Core Core)
 {
-    public Length Length { get; set; }
-    public Flexibility Flexibility { get; set; }
-    public Wood Wood { get; set; }
-    public Core Core { get; set; }
+    public Price CalculatePrice => Wood.Price + Core.Price;
 }

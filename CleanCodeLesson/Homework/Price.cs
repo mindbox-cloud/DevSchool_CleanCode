@@ -4,9 +4,9 @@ namespace CleanCodeLesson.Homework;
 
 public record Price
 {
-    public double Value { get; init; }
+    public decimal Value { get; init; }
 
-    public Price(double value)
+    public Price(decimal value)
     {
         if (value < 0)
         {
@@ -14,5 +14,10 @@ public record Price
         }
 
         Value = value;
+    }
+    
+    public static Price operator +(Price price1, Price price2)
+    {
+        return new Price(price1.Value + price2.Value);
     }
 }
