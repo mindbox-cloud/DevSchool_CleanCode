@@ -1,10 +1,13 @@
+using CleanCodeLesson.Homework.Cores;
+using CleanCodeLesson.Homework.ValueTypes;
+
 namespace CleanCodeLesson.Homework;
 
 public record MagicWand(
     Length Length, 
     Flexibility Flexibility, 
     Wood Wood, 
-    Core Core)
+    ICore Core)
 {
     public Price CalculatePrice => Wood.Price + Core.Price;
 }

@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace CleanCodeLesson.Homework;
+namespace CleanCodeLesson.Homework.ValueTypes;
 
 public record Length
 {

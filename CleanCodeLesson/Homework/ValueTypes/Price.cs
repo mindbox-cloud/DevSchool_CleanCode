@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace CleanCodeLesson.Homework;
+namespace CleanCodeLesson.Homework.ValueTypes;
 
 public record Price
 {
@@ -19,5 +19,10 @@ public record Price
     public static Price operator +(Price price1, Price price2)
     {
         return new Price(price1.Value + price2.Value);
+    }
+    
+    public static Price operator *(Price price1, decimal value)
+    {
+        return new Price(price1.Value * value);
     }
 }
