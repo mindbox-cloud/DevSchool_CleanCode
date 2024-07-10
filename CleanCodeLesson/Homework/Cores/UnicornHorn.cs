@@ -4,13 +4,13 @@ namespace CleanCodeLesson.Homework.Cores;
 
 public record UnicornHorn : ICore
 {
-    public Age Age { get; }
+    public UnicornAge UnicornAge { get; }
     private readonly Price _basePrice = new (Constants.CorePrice.UnicornHorn);
 
-    protected UnicornHorn(Age age)
+    protected UnicornHorn(UnicornAge unicornAge)
     {
-        Age = age;
+        UnicornAge = unicornAge;
     }
 
-    public Price Price => Age.Value > 100 ? _basePrice * (Age.Value / 100m) : _basePrice;
+    public Price Price => UnicornAge.Value > 100 ? _basePrice * (UnicornAge.Value / 100m) : _basePrice;
 }
