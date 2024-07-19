@@ -7,7 +7,7 @@ public record MagicWand(
     Length Length, 
     Flexibility Flexibility, 
     Wood Wood, 
-    ICore Core)
+    ICore Core) : IMagicWand
 {
-    public Price CalculatePrice => Wood.Price + Core.Price;
+    public Price Price => Wood.Price + Core.Price;
 }
