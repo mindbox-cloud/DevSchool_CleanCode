@@ -1,31 +1,34 @@
 namespace CleanCodeLesson.Homework.Workshop;
 
+public record Wood(bool WasEverRepaired);
+public record Core(bool WasEverRepaired);
+
 public record Wand
 {
-    public bool IsCoreWasRepaired { get; private set; }
-    public bool IsWoodWasRepaired { get; private set; }
+    public Wood Wood { get; private set; }
+    public Core Core { get; private set; }
 
-    public Wand(bool isCoreWasRepaired, bool isWoodWasRepaired)
+    public Wand(Wood wood, Core core)
     {
-        IsCoreWasRepaired = isCoreWasRepaired;
-        IsWoodWasRepaired = isWoodWasRepaired;
+        Wood = wood;
+        Core = core;
     }
 
     public void SetCoreRepaired()
     {
-        if (IsCoreWasRepaired)
+        if (Core.WasEverRepaired)
         {
             throw new InvalidOperationException("Core was already repaired.");
         }
-        IsCoreWasRepaired = true;
+        Core = new (true);
     }
 
     public void SetWoodRepaired()
     {
-        if (IsWoodWasRepaired)
+        if (Wood.WasEverRepaired)
         {
             throw new InvalidOperationException("Wood was already repaired.");
         }
-        IsWoodWasRepaired = true;
+        Wood = new (true);
     }
 }

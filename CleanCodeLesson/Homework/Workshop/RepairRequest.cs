@@ -20,12 +20,12 @@ public record RepairRequest
 
     public bool CouldBeRepaired()
     {
-        if (IsCoreBroken && Wand.IsCoreWasRepaired)
+        if (IsCoreBroken && Wand.Core.WasEverRepaired)
         {
             return false;
         }
 
-        if (IsWoodBroken && Wand.IsWoodWasRepaired)
+        if (IsWoodBroken && Wand.Wood.WasEverRepaired)
         {
             return false;
         }

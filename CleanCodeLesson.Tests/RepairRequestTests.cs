@@ -22,7 +22,7 @@ public class RepairRequestTests
     {
         // Act
         var act = () => new RepairRequest(
-            new Wand(isCoreWasRepaired: false, isWoodWasRepaired: false),
+            new Wand(new Wood(false), new Core(false)),
             isCoreBroken: false,
             isWoodBroken: false
         );
@@ -37,7 +37,7 @@ public class RepairRequestTests
         yield return new object[]
         {
             new RepairRequest(
-                new Wand(isCoreWasRepaired: true, isWoodWasRepaired: false),
+                new Wand(new Wood(WasEverRepaired: false), new Core(WasEverRepaired: true)),
                 isCoreBroken: true,
                 isWoodBroken: false
             ),
@@ -47,7 +47,7 @@ public class RepairRequestTests
         yield return new object[]
         {
             new RepairRequest(
-                new Wand(isCoreWasRepaired: false, isWoodWasRepaired: true),
+                new Wand(new Wood(WasEverRepaired: true), new Core(WasEverRepaired: false)),
                 isCoreBroken: false,
                 isWoodBroken: true
             ),
@@ -57,7 +57,7 @@ public class RepairRequestTests
         yield return new object[]
         {
             new RepairRequest(
-                new Wand(isCoreWasRepaired: true, isWoodWasRepaired: true),
+                new Wand(new Wood(WasEverRepaired: true), new Core(WasEverRepaired: true)),
                 isCoreBroken: true,
                 isWoodBroken: true
             ),
@@ -67,7 +67,7 @@ public class RepairRequestTests
         yield return new object[]
         {
             new RepairRequest(
-                new Wand(isCoreWasRepaired: false, isWoodWasRepaired: false),
+                new Wand(new Wood(WasEverRepaired: false), new Core(WasEverRepaired: false)),
                 isCoreBroken: true,
                 isWoodBroken: false
             ),
@@ -77,7 +77,7 @@ public class RepairRequestTests
         yield return new object[]
         {
             new RepairRequest(
-                new Wand(isCoreWasRepaired: false, isWoodWasRepaired: false),
+                new Wand(new Wood(WasEverRepaired: false), new Core(WasEverRepaired: false)),
                 isCoreBroken: false,
                 isWoodBroken: true
             ),
