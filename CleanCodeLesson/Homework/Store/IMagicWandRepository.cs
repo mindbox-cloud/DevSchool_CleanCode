@@ -2,5 +2,5 @@ namespace CleanCodeLesson.Homework;
 
 public interface IMagicWandRepository
 {
-    void AddMagicWand(MagicWand magicWand);
+    void AddMagicWand(IMagicWand magicWand);
 }

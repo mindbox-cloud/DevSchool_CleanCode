@@ -1,4 +1,3 @@
-using System.Collections.ObjectModel;
 using CleanCodeLesson.Homework.Cores;
 
 namespace CleanCodeLesson.Homework;
@@ -12,7 +11,7 @@ public record CollectibleWand(
     IReadOnlyCollection<WandOwner> owners)
     : IMagicWand
 {
-    private List<WandOwner> _owners = owners.ToList();
+    private readonly List<WandOwner> _owners = owners.ToList();
     public IReadOnlyCollection<WandOwner> Owners => _owners;
     
     public Length Length { get; } = length;
@@ -36,7 +35,7 @@ public record CollectibleWand(
         return false;
     }
 
-    private bool CanBeSold(WandOwner owner)
+    private static bool CanBeSold(WandOwner owner)
     {
         return owner.Age >= 18;
     }
