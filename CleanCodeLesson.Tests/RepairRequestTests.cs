@@ -1,4 +1,4 @@
-using CleanCodeLesson.Homework;
+using CleanCodeLesson.Homework.Workshop;
 
 namespace CleanCodeLesson.Tests;
 
@@ -16,74 +16,72 @@ public class RepairRequestTests
         // Assert
         Assert.AreEqual(expectedResult, result);
     }
+
+    [DataTestMethod]
+    public void CouldBeRepaired_WhenBothPartsNotBroken_ThrowsException()
+    {
+        // Act
+        var act = () => new RepairRequest(
+            new Wand(isCoreWasRepaired: false, isWoodWasRepaired: false),
+            isCoreBroken: false,
+            isWoodBroken: false
+        );
+
+        // Assert
+        Assert.ThrowsException<ArgumentException>(act);
+    }
     
     
     public static IEnumerable<object[]> RepairRequestTestData()
     {
-        yield return
-        [
-            new RepairRequest
-            {
-                IsCoreBroken = true,
-                IsWoodBroken = false,
-                WandRepairHistory = new WandRepairHistory { isCoreWasRepaired = true, isWoodWasRepaired = false }
-            },
+        yield return new object[]
+        {
+            new RepairRequest(
+                new Wand(isCoreWasRepaired: true, isWoodWasRepaired: false),
+                isCoreBroken: true,
+                isWoodBroken: false
+            ),
             false
-        ];
+        };
 
-        yield return
-        [
-            new RepairRequest
-            {
-                IsCoreBroken = false,
-                IsWoodBroken = true,
-                WandRepairHistory = new WandRepairHistory { isCoreWasRepaired = false, isWoodWasRepaired = true }
-            },
+        yield return new object[]
+        {
+            new RepairRequest(
+                new Wand(isCoreWasRepaired: false, isWoodWasRepaired: true),
+                isCoreBroken: false,
+                isWoodBroken: true
+            ),
             false
-        ];
+        };
 
-        yield return
-        [
-            new RepairRequest
-            {
-                IsCoreBroken = true,
-                IsWoodBroken = true,
-                WandRepairHistory = new WandRepairHistory { isCoreWasRepaired = true, isWoodWasRepaired = true }
-            },
+        yield return new object[]
+        {
+            new RepairRequest(
+                new Wand(isCoreWasRepaired: true, isWoodWasRepaired: true),
+                isCoreBroken: true,
+                isWoodBroken: true
+            ),
             false
-        ];
+        };
 
-        yield return
-        [
-            new RepairRequest
-            {
-                IsCoreBroken = true,
-                IsWoodBroken = false,
-                WandRepairHistory = new WandRepairHistory { isCoreWasRepaired = false, isWoodWasRepaired = false }
-            },
+        yield return new object[]
+        {
+            new RepairRequest(
+                new Wand(isCoreWasRepaired: false, isWoodWasRepaired: false),
+                isCoreBroken: true,
+                isWoodBroken: false
+            ),
             true
-        ];
+        };
 
-        yield return
-        [
-            new RepairRequest
-            {
-                IsCoreBroken = false,
-                IsWoodBroken = true,
-                WandRepairHistory = new WandRepairHistory { isCoreWasRepaired = false, isWoodWasRepaired = false }
-            },
+        yield return new object[]
+        {
+            new RepairRequest(
+                new Wand(isCoreWasRepaired: false, isWoodWasRepaired: false),
+                isCoreBroken: false,
+                isWoodBroken: true
+            ),
             true
-        ];
-
-        yield return
-        [
-            new RepairRequest
-            {
-                IsCoreBroken = false,
-                IsWoodBroken = false,
-                WandRepairHistory = new WandRepairHistory { isCoreWasRepaired = true, isWoodWasRepaired = true }
-            },
-            true
-        ];
+        };
     }
 }
