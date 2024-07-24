@@ -1,4 +1,4 @@
-namespace CleanCodeLesson.Homework;
+namespace CleanCodeLesson.Homework.Shop;
 
 public interface IMagicWandRepository
 {

@@ -1,4 +1,4 @@
-namespace CleanCodeLesson.Homework.ValueTypes;
+namespace CleanCodeLesson.Homework.Shop.ValueTypes;
 
 public record DragonHeartstringType(decimal Coefficient)
 {

@@ -1,7 +1,7 @@
-using CleanCodeLesson.Homework.Cores;
-using CleanCodeLesson.Homework.ValueTypes;
+using CleanCodeLesson.Homework.Shop.Cores;
+using CleanCodeLesson.Homework.Shop.ValueTypes;
 
-namespace CleanCodeLesson.Homework;
+namespace CleanCodeLesson.Homework.Shop;
 
 public record MagicWand(
     Length Length, 
