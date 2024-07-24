@@ -1,24 +1,24 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace CleanCodeLesson.Homework;
+namespace CleanCodeLesson.Homework.Repair;
 
 public record RepairRequest
 {
-    public MagicWandRepairInfo MagicWandRepairInfo { get; init; }
+    public MagicWand MagicWand { get; init; }
     
     public bool CoreBroken { get; init; }
     
     public bool WoodBroken { get; init; }
     
-    public RepairRequest(MagicWandRepairInfo magicWandRepairInfo, bool coreBroken, bool woodBroken)
+    public RepairRequest(MagicWand magicWand, bool coreBroken, bool woodBroken)
     {
-        if (coreBroken && magicWandRepairInfo.CoreRepairInfo.Repaired)
+        if (coreBroken && magicWand.CoreRepairInfo.Repaired)
             throw new ValidationException("Core already repaired.");
         
-        if (woodBroken && magicWandRepairInfo.WoodRepairInfo.Repaired)
+        if (woodBroken && magicWand.WoodRepairInfo.Repaired)
             throw new ValidationException("Wood already repaired.");
 
-        MagicWandRepairInfo = magicWandRepairInfo;
+        MagicWand = magicWand;
         CoreBroken = coreBroken;
         WoodBroken = woodBroken;
     }

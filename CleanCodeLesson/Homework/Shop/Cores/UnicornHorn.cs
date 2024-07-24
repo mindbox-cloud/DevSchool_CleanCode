@@ -1,6 +1,6 @@
-using CleanCodeLesson.Homework.ValueTypes;
+using CleanCodeLesson.Homework.Shop.ValueTypes;
 
-namespace CleanCodeLesson.Homework.Cores;
+namespace CleanCodeLesson.Homework.Shop.Cores;
 
 public record UnicornHorn : ICore
 {

@@ -1,4 +1,4 @@
-namespace CleanCodeLesson.Homework;
+namespace CleanCodeLesson.Homework.Repair;
 
 public record RepairInfo
 {
